@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,14 +16,14 @@
             background-size: cover;
             color: #ffffff;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            overflow: hidden;
+            padding: 20px;
         }
-        /* Dunkler Overlay-Effekt für besseren Kontrast */
         .overlay {
-            position: absolute;
+            position: fixed;
             top: 0;
             left: 0;
             width: 100%;
@@ -31,7 +31,6 @@
             background: rgba(5, 5, 10, 0.75);
             z-index: 1;
         }
-        /* Die glühende App-Card in der Mitte */
         .card {
             position: relative;
             z-index: 2;
@@ -42,7 +41,7 @@
             padding: 40px;
             text-align: center;
             max-width: 450px;
-            width: 90%;
+            width: 100%;
             backdrop-filter: blur(10px);
         }
         .game-icon {
@@ -53,38 +52,59 @@
             margin-bottom: 20px;
         }
         h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
+            font-weight: bold;
             letter-spacing: 3px;
             margin-bottom: 10px;
+            text-transform: uppercase;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
         }
-        p {
+        .description {
             color: #88aaff;
             font-size: 1.1rem;
-            margin-bottom: 30px;
             line-height: 1.5;
+            margin-bottom: 30px;
         }
-        /* Der fetteste Play Store Button des Universums */
         .btn-download {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
             background: #5a0099;
             color: #ffffff;
             text-decoration: none;
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: bold;
             padding: 16px 32px;
             border-radius: 16px;
             border: 2px solid #aa55ff;
             box-shadow: 0 4px 15px rgba(90, 0, 153, 0.4);
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
+            width: 100%;
         }
         .btn-download:hover {
             background: #7300c2;
             box-shadow: 0 0 25px #aa55ff;
             transform: translateY(-2px);
+        }
+        .site-footer {
+            position: relative;
+            z-index: 2;
+            margin-top: 30px;
+            font-size: 0.85rem;
+            text-align: center;
+        }
+        .site-footer a {
+            color: #555577;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .site-footer a:hover {
+            color: #ffffff;
+        }
+        .site-footer .copyright {
+            color: #444455;
+            font-size: 0.8rem;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -97,17 +117,18 @@
         <img src="25415.png" alt="Yakubia Icon" class="game-icon">
         
         <h1>YAKUBIA</h1>
-        <p>Collect Dark Matter and unlock powerful Elemental Boosters in the Quantum Lab!</p>
+        <p class="description">Collect Dark Matter and unlock powerful Elemental Boosters in the Quantum Lab!</p>
         
         <a href="https://play.google.com/store/apps/details?id=com.spacegame.yakubia" class="btn-download" target="_blank">
             <span>Now on Google Play</span>
         </a>
-        <footer>
-            
-        <br>
-        <br>
-            <p>&copy; 2026 Yakubia. All Rights Reserved.</p>
-    
+        
     </div>
+
+    <footer class="site-footer">
+        <a href="app-ads.txt" target="_blank">Ad-Verification (app-ads.txt)</a>
+        <p class="copyright">&copy; 2026 SpaceGame Studios. All Rights Reserved.</p>
+    </footer>
+
 </body>
 </html>
