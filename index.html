@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yakubia - Official Space Game</title>
+    
+    <meta name="description" content="Collect Dark Matter and unlock powerful Elemental Boosters in the Quantum Lab! Download Yakubia now on Google Play.">
+    <meta name="theme-color" content="#5a0099">
+    
+    <title>Yakubia</title>
     <style>
         * {
             margin: 0;
@@ -43,6 +47,8 @@
             max-width: 450px;
             width: 100%;
             backdrop-filter: blur(10px);
+            /* NEU: Etwas sanfterer Übergang beim Laden */
+            animation: fadeIn 0.8s ease-out;
         }
         .game-icon {
             width: 120px;
@@ -69,6 +75,7 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            gap: 12px; /* NEU: Abstand zwischen Icon und Text */
             background: #5a0099;
             color: #ffffff;
             text-decoration: none;
@@ -80,11 +87,19 @@
             box-shadow: 0 4px 15px rgba(90, 0, 153, 0.4);
             transition: all 0.2s ease;
             width: 100%;
+            /* NEU: Leichte Puls-Animation, um Klicks anzuziehen */
+            animation: pulse 2s infinite;
         }
         .btn-download:hover {
             background: #7300c2;
             box-shadow: 0 0 25px #aa55ff;
             transform: translateY(-2px);
+            animation: none; /* Stoppt das Pulsieren beim Hover */
+        }
+        .btn-download svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
         }
         .site-footer {
             position: relative;
@@ -106,6 +121,30 @@
             font-size: 0.8rem;
             margin-top: 10px;
         }
+
+        /* NEU: Keyframes für Animationen */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(170, 85, 255, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(170, 85, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(170, 85, 255, 0); }
+        }
+
+        /* NEU: Bessere Darstellung auf ganz kleinen Smartphones */
+        @media (max-width: 480px) {
+            .card {
+                padding: 30px 20px;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+            .description {
+                font-size: 1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -114,12 +153,15 @@
 
     <div class="card">
         
-        <img src="25415.png" alt="Yakubia Icon" class="game-icon">
+        <img src="25415.png" alt="Yakubia Game Icon" class="game-icon">
         
         <h1>YAKUBIA</h1>
         <p class="description">Collect Dark Matter and unlock powerful Elemental Boosters in the Quantum Lab!</p>
         
         <a href="https://play.google.com/store/apps/details?id=com.spacegame.yakubia" class="btn-download" target="_blank">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20.6644 10.2284L4.72939 1.14498C3.80552 0.618606 2.625 1.28581 2.625 2.35717V21.6428C2.625 22.7142 3.80552 23.3814 4.72939 22.855L20.6644 13.7716C21.5649 13.2586 21.5649 10.7414 20.6644 10.2284Z"/>
+            </svg>
             <span>Now on Google Play</span>
         </a>
         
@@ -127,7 +169,7 @@
 
     <footer class="site-footer">
         <a href="app-ads.txt" target="_blank">Ad-Verification (app-ads.txt)</a>
-        <p class="copyright">&copy; 2026 SpaceGame Studios. All Rights Reserved.</p>
+        <p class="copyright">&copy; 2026 Yakubia. All Rights Reserved.</p>
     </footer>
 
 </body>
