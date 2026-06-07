@@ -32,11 +32,14 @@
             background-position: center;
             background-attachment: fixed;
             color: var(--text-main);
+            
+            /* WICHTIG: Flexbox zieht den Body auf volle Höhe und verteilt den Inhalt */
             min-height: 100vh;
             display: flex;
             flex-direction: column;
+            justify-content: space-between; 
             align-items: center;
-            padding: 60px 20px;
+            padding: 40px 20px;
         }
 
         .overlay {
@@ -58,10 +61,12 @@
             max-width: 800px; 
             display: flex;
             flex-direction: column;
+            flex-grow: 1; /* Erlaubt dem Container, den Raum bis zum Footer zu füllen */
+            justify-content: center; /* Zentriert Inhalt vertikal, falls viel Platz ist */
         }
 
         header {
-            margin-bottom: 40px;
+            margin-bottom: 35px;
             text-align: left;
         }
 
@@ -79,11 +84,19 @@
             max-width: 600px;
         }
 
+        /* Optimiertes Grid für Handy und Desktop */
         .app-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: 1fr; /* Standardmäßig 1 Spalte (Handy) */
             gap: 20px;
             width: 100%;
+        }
+
+        /* Ab Tablets/PC schalten wir auf 2 Spalten um */
+        @media (min-width: 650px) {
+            .app-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         .card {
@@ -188,10 +201,11 @@
             fill: currentColor;
         }
 
+        /* Footer fixiert am unteren Rand des Bildschirms */
         .site-footer {
             position: relative;
             z-index: 2;
-            margin-top: 60px;
+            margin-top: 40px;
             width: 100%;
             max-width: 800px;
             display: flex;
@@ -216,29 +230,24 @@
             color: #555566;
         }
 
-        /* Anpassungen für Smartphones */
+        /* Spezifische Handy-Optimierungen */
         @media (max-width: 600px) {
             body { 
-                padding: 30px 15px; 
+                padding: 30px 20px; 
             }
             header {
-                text-align: center;
-                margin-bottom: 30px;
+                text-align: left; /* Sieht moderner aus als zentriert */
+                margin-bottom: 25px;
             }
             header h1 { 
-                font-size: 2rem; 
+                font-size: 2.2rem; 
             }
             header p { 
                 font-size: 1rem; 
-                margin: 0 auto;
-            }
-            .card { 
-                padding: 20px; 
             }
             .site-footer { 
-                flex-direction: column; 
-                gap: 15px; 
-                text-align: center; 
+                flex-direction: row; /* Behält die saubere Links/Rechts-Aufteilung bei */
+                font-size: 0.8rem;
             }
         }
     </style>
