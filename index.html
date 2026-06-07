@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Entdecke meine Spiele: Yakubia und Tridimensional Chess.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Discover my games: Yakubia and Tridimensional Chess.">
     <meta name="theme-color" content="#0a0a0c">
     
-    <title>YKB4 | Apps & Games</title>
+    <title>My Projects | Apps & Games</title>
     <style>
         :root {
             --bg-color: #0a0a0c;
@@ -15,7 +15,7 @@
             --card-hover: rgba(30, 30, 36, 0.8);
             --text-main: #ededed;
             --text-muted: #a0a0a5;
-            --accent: #6b21a8; /* Ein dezentes, modernes Lila */
+            --accent: #6b21a8; 
         }
 
         * {
@@ -27,7 +27,6 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
-            /* Das Hintergrundbild wird jetzt sehr dezent eingebunden */
             background-image: url('Screenshot_20260429_135359_Yakubia(1).jpg');
             background-size: cover;
             background-position: center;
@@ -40,7 +39,6 @@
             padding: 60px 20px;
         }
 
-        /* Dunkler, matter Overlay, um das Bild in den Hintergrund zu rücken */
         .overlay {
             position: fixed;
             top: 0;
@@ -57,7 +55,7 @@
             position: relative;
             z-index: 2;
             width: 100%;
-            max-width: 800px; /* Verhindert, dass es auf dem PC zu riesig wird */
+            max-width: 800px; 
             display: flex;
             flex-direction: column;
         }
@@ -68,28 +66,26 @@
         }
 
         header h1 {
-            font-size: 2rem;
-            font-weight: 600;
+            font-size: 2.5rem;
+            font-weight: 700;
             letter-spacing: -0.5px;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
 
         header p {
             color: var(--text-muted);
-            font-size: 1rem;
-            line-height: 1.5;
-            max-width: 500px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            max-width: 600px;
         }
 
-        /* Modernes, schlichtes Grid */
         .app-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
             width: 100%;
         }
 
-        /* Karte ohne Lichter, nur ganz feiner Rand */
         .card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -114,7 +110,7 @@
         }
 
         .game-icon {
-            width: 64px; /* Viel kleiner und moderner */
+            width: 64px; 
             height: 64px;
             border-radius: 14px;
             object-fit: cover;
@@ -145,7 +141,6 @@
             flex-grow: 1;
         }
 
-        /* Button Styling - Flach und Clean */
         .button-group {
             display: flex;
             flex-direction: column;
@@ -160,7 +155,7 @@
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 500;
-            padding: 10px 16px;
+            padding: 12px 16px;
             border-radius: 10px;
             transition: all 0.2s ease;
             width: 100%;
@@ -193,7 +188,6 @@
             fill: currentColor;
         }
 
-        /* Footer */
         .site-footer {
             position: relative;
             z-index: 2;
@@ -224,11 +218,28 @@
 
         /* Anpassungen für Smartphones */
         @media (max-width: 600px) {
-            body { padding: 40px 15px; }
-            header h1 { font-size: 1.75rem; }
-            header p { font-size: 0.9rem; }
-            .card { padding: 20px; }
-            .site-footer { flex-direction: column; gap: 10px; text-align: center; }
+            body { 
+                padding: 30px 15px; 
+            }
+            header {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+            header h1 { 
+                font-size: 2rem; 
+            }
+            header p { 
+                font-size: 1rem; 
+                margin: 0 auto;
+            }
+            .card { 
+                padding: 20px; 
+            }
+            .site-footer { 
+                flex-direction: column; 
+                gap: 15px; 
+                text-align: center; 
+            }
         }
     </style>
 </head>
@@ -239,13 +250,12 @@
     <div class="container">
         
         <header>
-            <h1>YKB4</h1>
-            <p>Meine entwickelten Spiele und Apps für Android und den Web-Browser.</p>
+            <h1>My Projects</h1>
+            <p>I'm a solo indie developer building games and apps in my free time. Check out my projects for Android and the web below.</p>
         </header>
 
         <div class="app-grid">
             
-            <!-- APP 1: YAKUBIA -->
             <div class="card">
                 <div class="card-header">
                     <img src="25415.png" alt="Yakubia Icon" class="game-icon" onerror="this.src='https://via.placeholder.com/64/111/fff?text=Y'">
@@ -266,16 +276,15 @@
                 </div>
             </div>
 
-            <!-- APP 2: 3D SCHACH -->
             <div class="card">
                 <div class="card-header">
                     <img src="https://ykb4.github.io/Tridimensional-Chess/icon.png" alt="3D Chess Icon" class="game-icon" onerror="this.src='https://via.placeholder.com/64/111/fff?text=3D'">
                     <div>
-                        <h2>3D Schach</h2>
+                        <h2>3D Chess</h2>
                         <span class="badge">Board Game</span>
                     </div>
                 </div>
-                <p class="description">Erlebe den Strategie-Klassiker in einer neuen Dimension. Tridimensional Chess für Handy und Browser.</p>
+                <p class="description">Experience the classic strategy game in a new dimension. Tridimensional Chess for mobile and browser.</p>
                 
                 <div class="button-group">
                     <a href="https://play.google.com/store/apps/details?id=com.dreidimensional.schach" class="btn btn-primary" target="_blank">
@@ -288,7 +297,7 @@
                         <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
                         </svg>
-                        <span>Im Browser spielen</span>
+                        <span>Play in Browser</span>
                     </a>
                 </div>
             </div>
@@ -297,7 +306,7 @@
     </div>
 
     <footer class="site-footer">
-        <p class="copyright">&copy; 2026 YKB4</p>
+        <p class="copyright">&copy; 2026 My Projects</p>
         <a href="Privacy_Policy.txt" target="_blank">Privacy Policy</a>
     </footer>
 
