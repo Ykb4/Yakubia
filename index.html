@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Discover my games: Yakubia and Tridimensional Chess.">
     <meta name="theme-color" content="#0a0a0c">
     
@@ -32,14 +32,13 @@
             background-position: center;
             background-attachment: fixed;
             color: var(--text-main);
-            
-            /* WICHTIG: Flexbox zieht den Body auf volle Höhe und verteilt den Inhalt */
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: space-between; 
             align-items: center;
-            padding: 40px 20px;
+            justify-content: space-between;
+            /* Weniger Padding oben/unten auf Handys für mehr Fokus */
+            padding: 30px 16px; 
         }
 
         .overlay {
@@ -58,54 +57,48 @@
             position: relative;
             z-index: 2;
             width: 100%;
-            max-width: 800px; 
+            /* Perfekte Breite für ein nahes, fettes Handy-Layout */
+            max-width: 480px; 
             display: flex;
             flex-direction: column;
-            flex-grow: 1; /* Erlaubt dem Container, den Raum bis zum Footer zu füllen */
-            justify-content: center; /* Zentriert Inhalt vertikal, falls viel Platz ist */
+            flex-grow: 1;
         }
 
         header {
-            margin-bottom: 35px;
+            margin-bottom: 25px;
             text-align: left;
+            width: 100%;
         }
 
         header h1 {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 700;
             letter-spacing: -0.5px;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         header p {
             color: var(--text-muted);
-            font-size: 1.1rem;
-            line-height: 1.6;
-            max-width: 600px;
+            font-size: 1rem;
+            line-height: 1.5;
         }
 
-        /* Optimiertes Grid für Handy und Desktop */
+        /* Haupt-Struktur: Auf dem Handy immer untereinander und nah am Rand */
         .app-grid {
-            display: grid;
-            grid-template-columns: 1fr; /* Standardmäßig 1 Spalte (Handy) */
+            display: flex;
+            flex-direction: column;
             gap: 20px;
             width: 100%;
-        }
-
-        /* Ab Tablets/PC schalten wir auf 2 Spalten um */
-        @media (min-width: 650px) {
-            .app-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
         }
 
         .card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
             border-radius: 16px;
-            padding: 24px;
+            padding: 22px;
             display: flex;
             flex-direction: column;
+            width: 100%;
             transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
         }
 
@@ -123,16 +116,16 @@
         }
 
         .game-icon {
-            width: 64px; 
-            height: 64px;
-            border-radius: 14px;
+            width: 60px; 
+            height: 60px;
+            border-radius: 12px;
             object-fit: cover;
             background: #222; 
             border: 1px solid var(--card-border);
         }
 
         .card h2 {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 4px;
         }
@@ -150,7 +143,7 @@
             color: var(--text-muted);
             font-size: 0.95rem;
             line-height: 1.5;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             flex-grow: 1;
         }
 
@@ -166,10 +159,10 @@
             justify-content: center;
             gap: 8px;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 500;
-            padding: 12px 16px;
-            border-radius: 10px;
+            padding: 14px 16px; /* Buttons leicht größer für bessere Touch-Bedienung */
+            border-radius: 12px;
             transition: all 0.2s ease;
             width: 100%;
         }
@@ -181,7 +174,7 @@
 
         .btn-primary:hover {
             background: #ffffff;
-            transform: scale(1.02);
+            transform: scale(1.01);
         }
 
         .btn-secondary {
@@ -192,7 +185,7 @@
 
         .btn-secondary:hover {
             background: rgba(255, 255, 255, 0.1);
-            transform: scale(1.02);
+            transform: scale(1.01);
         }
 
         .btn svg {
@@ -201,53 +194,39 @@
             fill: currentColor;
         }
 
-        /* Footer fixiert am unteren Rand des Bildschirms */
         .site-footer {
             position: relative;
             z-index: 2;
             margin-top: 40px;
             width: 100%;
-            max-width: 800px;
+            max-width: 480px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding-top: 20px;
+            padding-top: 15px;
             border-top: 1px solid var(--card-border);
-            font-size: 0.85rem;
+            font-size: 0.8rem;
         }
 
         .site-footer a {
             color: var(--text-muted);
             text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .site-footer a:hover {
-            color: var(--text-main);
         }
 
         .copyright {
             color: #555566;
         }
 
-        /* Spezifische Handy-Optimierungen */
-        @media (max-width: 600px) {
-            body { 
-                padding: 30px 20px; 
+        /* Große Bildschirme (PC / Tablet) -> Hier schaltet es sauber auf Nebeneinander um */
+        @media (min-width: 768px) {
+            .container, .site-footer {
+                max-width: 850px;
             }
-            header {
-                text-align: left; /* Sieht moderner aus als zentriert */
-                margin-bottom: 25px;
+            .app-grid {
+                flex-direction: row;
             }
-            header h1 { 
-                font-size: 2.2rem; 
-            }
-            header p { 
-                font-size: 1rem; 
-            }
-            .site-footer { 
-                flex-direction: row; /* Behält die saubere Links/Rechts-Aufteilung bei */
-                font-size: 0.8rem;
+            .card {
+                width: 50%;
             }
         }
     </style>
