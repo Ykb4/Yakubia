@@ -1,149 +1,234 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Entdecke meine Spiele: Yakubia und Tridimensional Chess.">
+    <meta name="theme-color" content="#0a0a0c">
     
-    <meta name="description" content="Collect Dark Matter and unlock powerful Elemental Boosters in the Quantum Lab! Download Yakubia now on Google Play.">
-    <meta name="theme-color" content="#5a0099">
-    
-    <title>Yakubia</title>
+    <title>YKB4 | Apps & Games</title>
     <style>
+        :root {
+            --bg-color: #0a0a0c;
+            --card-bg: rgba(20, 20, 24, 0.6);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --card-hover: rgba(30, 30, 36, 0.8);
+            --text-main: #ededed;
+            --text-muted: #a0a0a5;
+            --accent: #6b21a8; /* Ein dezentes, modernes Lila */
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: #05050a url('Screenshot_20260429_135359_Yakubia(1).jpg') no-repeat center center fixed;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            /* Das Hintergrundbild wird jetzt sehr dezent eingebunden */
+            background-image: url('Screenshot_20260429_135359_Yakubia(1).jpg');
             background-size: cover;
-            color: #ffffff;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--text-main);
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            padding: 20px;
+            padding: 60px 20px;
         }
+
+        /* Dunkler, matter Overlay, um das Bild in den Hintergrund zu rücken */
         .overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(5, 5, 10, 0.75);
+            background: rgba(10, 10, 12, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             z-index: 1;
         }
-        .card {
+
+        .container {
             position: relative;
             z-index: 2;
-            background: rgba(26, 26, 36, 0.85);
-            border: 2px solid #5a0099;
-            box-shadow: 0 0 30px rgba(90, 0, 153, 0.5), inset 0 0 15px rgba(0, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 40px;
-            text-align: center;
-            max-width: 450px;
             width: 100%;
-            backdrop-filter: blur(10px);
-            /* NEU: Etwas sanfterer Übergang beim Laden */
-            animation: fadeIn 0.8s ease-out;
+            max-width: 800px; /* Verhindert, dass es auf dem PC zu riesig wird */
+            display: flex;
+            flex-direction: column;
         }
-        .game-icon {
-            width: 120px;
-            height: 120px;
-            border-radius: 26px;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-            margin-bottom: 20px;
+
+        header {
+            margin-bottom: 40px;
+            text-align: left;
         }
-        h1 {
-            font-size: 2.8rem;
-            font-weight: bold;
-            letter-spacing: 3px;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
         }
-        .description {
-            color: #88aaff;
-            font-size: 1.1rem;
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1rem;
             line-height: 1.5;
-            margin-bottom: 30px;
+            max-width: 500px;
         }
-        .btn-download {
-            display: inline-flex;
+
+        /* Modernes, schlichtes Grid */
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            width: 100%;
+        }
+
+        /* Karte ohne Lichter, nur ganz feiner Rand */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            background: var(--card-hover);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .game-icon {
+            width: 64px; /* Viel kleiner und moderner */
+            height: 64px;
+            border-radius: 14px;
+            object-fit: cover;
+            background: #222; 
+            border: 1px solid var(--card-border);
+        }
+
+        .card h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .card .badge {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2px 8px;
+            border-radius: 12px;
+            display: inline-block;
+        }
+
+        .description {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        /* Button Styling - Flach und Clean */
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .btn {
+            display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px; /* NEU: Abstand zwischen Icon und Text */
-            background: #5a0099;
-            color: #ffffff;
+            gap: 8px;
             text-decoration: none;
-            font-size: 1.25rem;
-            font-weight: bold;
-            padding: 16px 32px;
-            border-radius: 16px;
-            border: 2px solid #aa55ff;
-            box-shadow: 0 4px 15px rgba(90, 0, 153, 0.4);
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 10px 16px;
+            border-radius: 10px;
             transition: all 0.2s ease;
             width: 100%;
-            /* NEU: Leichte Puls-Animation, um Klicks anzuziehen */
-            animation: pulse 2s infinite;
         }
-        .btn-download:hover {
-            background: #7300c2;
-            box-shadow: 0 0 25px #aa55ff;
-            transform: translateY(-2px);
-            animation: none; /* Stoppt das Pulsieren beim Hover */
+
+        .btn-primary {
+            background: #ededed;
+            color: #0a0a0c;
         }
-        .btn-download svg {
-            width: 24px;
-            height: 24px;
+
+        .btn-primary:hover {
+            background: #ffffff;
+            transform: scale(1.02);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-main);
+            border: 1px solid var(--card-border);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.02);
+        }
+
+        .btn svg {
+            width: 18px;
+            height: 18px;
             fill: currentColor;
         }
+
+        /* Footer */
         .site-footer {
             position: relative;
             z-index: 2;
-            margin-top: 30px;
+            margin-top: 60px;
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--card-border);
             font-size: 0.85rem;
-            text-align: center;
         }
+
         .site-footer a {
-            color: #555577;
+            color: var(--text-muted);
             text-decoration: none;
             transition: color 0.2s;
         }
+
         .site-footer a:hover {
-            color: #ffffff;
-        }
-        .site-footer .copyright {
-            color: #444455;
-            font-size: 0.8rem;
-            margin-top: 10px;
+            color: var(--text-main);
         }
 
-        /* NEU: Keyframes für Animationen */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(170, 85, 255, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(170, 85, 255, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(170, 85, 255, 0); }
+        .copyright {
+            color: #555566;
         }
 
-        /* NEU: Bessere Darstellung auf ganz kleinen Smartphones */
-        @media (max-width: 480px) {
-            .card {
-                padding: 30px 20px;
-            }
-            h1 {
-                font-size: 2.2rem;
-            }
-            .description {
-                font-size: 1rem;
-            }
+        /* Anpassungen für Smartphones */
+        @media (max-width: 600px) {
+            body { padding: 40px 15px; }
+            header h1 { font-size: 1.75rem; }
+            header p { font-size: 0.9rem; }
+            .card { padding: 20px; }
+            .site-footer { flex-direction: column; gap: 10px; text-align: center; }
         }
     </style>
 </head>
@@ -151,25 +236,69 @@
 
     <div class="overlay"></div>
 
-    <div class="card">
+    <div class="container">
         
-        <img src="25415.png" alt="Yakubia Game Icon" class="game-icon">
-        
-        <h1>YAKUBIA</h1>
-        <p class="description">Collect Dark Matter and unlock powerful Elemental Boosters in the Quantum Lab!</p>
-        
-        <a href="https://play.google.com/store/apps/details?id=com.spacegame.yakubia" class="btn-download" target="_blank">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20.6644 10.2284L4.72939 1.14498C3.80552 0.618606 2.625 1.28581 2.625 2.35717V21.6428C2.625 22.7142 3.80552 23.3814 4.72939 22.855L20.6644 13.7716C21.5649 13.2586 21.5649 10.7414 20.6644 10.2284Z"/>
-            </svg>
-            <span>Now on Google Play</span>
-        </a>
-        
+        <header>
+            <h1>YKB4</h1>
+            <p>Meine entwickelten Spiele und Apps für Android und den Web-Browser.</p>
+        </header>
+
+        <div class="app-grid">
+            
+            <!-- APP 1: YAKUBIA -->
+            <div class="card">
+                <div class="card-header">
+                    <img src="25415.png" alt="Yakubia Icon" class="game-icon" onerror="this.src='https://via.placeholder.com/64/111/fff?text=Y'">
+                    <div>
+                        <h2>Yakubia</h2>
+                        <span class="badge">Arcade / Strategy</span>
+                    </div>
+                </div>
+                <p class="description">Collect Dark Matter and unlock powerful Elemental Boosters in the Quantum Lab!</p>
+                
+                <div class="button-group">
+                    <a href="https://play.google.com/store/apps/details?id=com.spacegame.yakubia" class="btn btn-primary" target="_blank">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.6644 10.2284L4.72939 1.14498C3.80552 0.618606 2.625 1.28581 2.625 2.35717V21.6428C2.625 22.7142 3.80552 23.3814 4.72939 22.855L20.6644 13.7716C21.5649 13.2586 21.5649 10.7414 20.6644 10.2284Z"/>
+                        </svg>
+                        <span>Google Play</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- APP 2: 3D SCHACH -->
+            <div class="card">
+                <div class="card-header">
+                    <img src="https://ykb4.github.io/Tridimensional-Chess/icon.png" alt="3D Chess Icon" class="game-icon" onerror="this.src='https://via.placeholder.com/64/111/fff?text=3D'">
+                    <div>
+                        <h2>3D Schach</h2>
+                        <span class="badge">Board Game</span>
+                    </div>
+                </div>
+                <p class="description">Erlebe den Strategie-Klassiker in einer neuen Dimension. Tridimensional Chess für Handy und Browser.</p>
+                
+                <div class="button-group">
+                    <a href="https://play.google.com/store/apps/details?id=com.dreidimensional.schach" class="btn btn-primary" target="_blank">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20.6644 10.2284L4.72939 1.14498C3.80552 0.618606 2.625 1.28581 2.625 2.35717V21.6428C2.625 22.7142 3.80552 23.3814 4.72939 22.855L20.6644 13.7716C21.5649 13.2586 21.5649 10.7414 20.6644 10.2284Z"/>
+                        </svg>
+                        <span>Google Play</span>
+                    </a>
+                    <a href="https://ykb4.github.io/Tridimensional-Chess/" class="btn btn-secondary" target="_blank">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                        </svg>
+                        <span>Im Browser spielen</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
     </div>
 
     <footer class="site-footer">
+        <p class="copyright">&copy; 2026 YKB4.</p>
         <a href="Privacy_Policy.txt" target="_blank">Privacy Policy</a>
-        <p class="copyright">&copy; 2026 Yakubia. All Rights Reserved.</p>
     </footer>
 
 </body>
