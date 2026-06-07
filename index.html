@@ -9,13 +9,14 @@
     <title>My Projects | Apps & Games</title>
     <style>
         :root {
-            --bg-color: #0a0a0c;
-            --card-bg: rgba(20, 20, 24, 0.6);
-            --card-border: rgba(255, 255, 255, 0.08);
-            --card-hover: rgba(30, 30, 36, 0.8);
-            --text-main: #ededed;
+            --bg-color: #0d0d0f; /* Sehr dunkler Hintergrund wie im Vorbild */
+            --card-bg: #16161e; /* Der dunkelblau-graue Ton der Karten */
+            --text-main: #ffffff;
             --text-muted: #a0a0a5;
-            --accent: #6b21a8; 
+            
+            /* Button Farben aus deinem Screenshot */
+            --btn-blue: #3b82f6;
+            --btn-grey: #4a4a4a;
         }
 
         * {
@@ -27,276 +28,164 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
-            background-image: url('Screenshot_20260429_135359_Yakubia(1).jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
             color: var(--text-main);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: space-between;
-            /* Weniger Padding oben/unten auf Handys für mehr Fokus */
-            padding: 30px 16px; 
+            padding: 40px 20px;
         }
 
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(10, 10, 12, 0.85);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            z-index: 1;
-        }
-
+        /* Container auf Handy-Größe optimiert */
         .container {
-            position: relative;
-            z-index: 2;
             width: 100%;
-            /* Perfekte Breite für ein nahes, fettes Handy-Layout */
-            max-width: 480px; 
+            max-width: 500px; /* Hält alles schön kompakt zusammen */
             display: flex;
             flex-direction: column;
-            flex-grow: 1;
+            align-items: center;
         }
 
+        /* Zentrierter Header wie bei "Aedus G." */
         header {
-            margin-bottom: 25px;
-            text-align: left;
+            text-align: center;
+            margin-bottom: 40px;
             width: 100%;
         }
 
         header h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            margin-bottom: 8px;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 12px;
         }
 
         header p {
             color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.5;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        /* Die neuen, großen Karten */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            width: 100%;
+            margin-bottom: 30px;
+            overflow: hidden; /* Schneidet das Bild oben an den Ecken rund ab */
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Das große Banner-Bild oben */
+        .card-banner {
+            width: 100%;
+            height: 220px; /* Feste Höhe für die Bilder */
+            object-fit: cover; /* Verhindert Verzerrungen */
+            background-color: #222;
+            display: block;
+        }
+
+        /* Der untere Teil mit Text und Buttons */
+        .card-body {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-body h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .card-body p {
+            color: var(--text-muted);
             font-size: 1rem;
             line-height: 1.5;
+            margin-bottom: 24px;
         }
 
-        /* Haupt-Struktur: Auf dem Handy immer untereinander und nah am Rand */
-        .app-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            width: 100%;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 22px;
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            background: var(--card-hover);
-            border-color: rgba(255, 255, 255, 0.15);
-        }
-
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 16px;
-        }
-
-        .game-icon {
-            width: 60px; 
-            height: 60px;
-            border-radius: 12px;
-            object-fit: cover;
-            background: #222; 
-            border: 1px solid var(--card-border);
-        }
-
-        .card h2 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .card .badge {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2px 8px;
-            border-radius: 12px;
-            display: inline-block;
-        }
-
-        .description {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.5;
-            margin-bottom: 20px;
-            flex-grow: 1;
-        }
-
+        /* Buttons linksbündig und gestapelt */
         .button-group {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
+            align-items: flex-start; /* Verhindert, dass die Buttons über die ganze Breite gehen */
         }
 
         .btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
             text-decoration: none;
+            font-weight: 600;
             font-size: 0.95rem;
-            font-weight: 500;
-            padding: 14px 16px; /* Buttons leicht größer für bessere Touch-Bedienung */
+            padding: 12px 24px;
             border-radius: 12px;
-            transition: all 0.2s ease;
-            width: 100%;
+            transition: opacity 0.2s;
+            text-align: center;
         }
 
-        .btn-primary {
-            background: #ededed;
-            color: #0a0a0c;
+        .btn:hover {
+            opacity: 0.85;
         }
 
-        .btn-primary:hover {
-            background: #ffffff;
-            transform: scale(1.01);
+        /* Die verschiedenen Button-Styles aus deinen Bildern */
+        .btn-blue {
+            background-color: var(--btn-blue);
+            color: #ffffff;
         }
 
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.05);
-            color: var(--text-main);
-            border: 1px solid var(--card-border);
+        .btn-grey {
+            background-color: var(--btn-grey);
+            color: #d1d1d1;
         }
 
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: scale(1.01);
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--btn-blue);
+            color: var(--btn-blue);
         }
 
-        .btn svg {
-            width: 18px;
-            height: 18px;
-            fill: currentColor;
-        }
-
-        .site-footer {
-            position: relative;
-            z-index: 2;
-            margin-top: 40px;
-            width: 100%;
-            max-width: 480px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 15px;
-            border-top: 1px solid var(--card-border);
-            font-size: 0.8rem;
-        }
-
-        .site-footer a {
-            color: var(--text-muted);
-            text-decoration: none;
-        }
-
-        .copyright {
-            color: #555566;
-        }
-
-        /* Große Bildschirme (PC / Tablet) -> Hier schaltet es sauber auf Nebeneinander um */
-        @media (min-width: 768px) {
-            .container, .site-footer {
-                max-width: 850px;
-            }
-            .app-grid {
-                flex-direction: row;
-            }
-            .card {
-                width: 50%;
-            }
-        }
     </style>
 </head>
 <body>
-
-    <div class="overlay"></div>
 
     <div class="container">
         
         <header>
             <h1>My Projects</h1>
-            <p>I'm a solo indie developer building games and apps in my free time. Check out my projects for Android and the web below.</p>
+            <p>I'm a solo indie developer building games and apps in my free time 🎮</p>
         </header>
 
-        <div class="app-grid">
+        <div class="card">
+            <img src="https://via.placeholder.com/600x300/1e1e2d/fff?text=Yakubia+Banner" alt="Yakubia Banner" class="card-banner">
             
-            <div class="card">
-                <div class="card-header">
-                    <img src="25415.png" alt="Yakubia Icon" class="game-icon" onerror="this.src='https://via.placeholder.com/64/111/fff?text=Y'">
-                    <div>
-                        <h2>Yakubia</h2>
-                        <span class="badge">Arcade</span>
-                    </div>
-                </div>
-                <p class="description">Collect Dark Matter and unlock powerful Elemental Boosters in the Quantum Lab!</p>
+            <div class="card-body">
+                <h2>Yakubia</h2>
+                <p>Collect Dark Matter and unlock powerful Elemental Boosters in the Quantum Lab!</p>
                 
                 <div class="button-group">
-                    <a href="https://play.google.com/store/apps/details?id=com.spacegame.yakubia" class="btn btn-primary" target="_blank">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M20.6644 10.2284L4.72939 1.14498C3.80552 0.618606 2.625 1.28581 2.625 2.35717V21.6428C2.625 22.7142 3.80552 23.3814 4.72939 22.855L20.6644 13.7716C21.5649 13.2586 21.5649 10.7414 20.6644 10.2284Z"/>
-                        </svg>
-                        <span>Google Play</span>
-                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.spacegame.yakubia" class="btn btn-blue" target="_blank">Google Play</a>
                 </div>
             </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <img src="https://ykb4.github.io/Tridimensional-Chess/icon.png" alt="3D Chess Icon" class="game-icon" onerror="this.src='https://via.placeholder.com/64/111/fff?text=3D'">
-                    <div>
-                        <h2>3D Chess</h2>
-                        <span class="badge">Board Game</span>
-                    </div>
-                </div>
-                <p class="description">Experience the classic strategy game in a new dimension. Tridimensional Chess for mobile and browser.</p>
-                
-                <div class="button-group">
-                    <a href="https://play.google.com/store/apps/details?id=com.dreidimensional.schach" class="btn btn-primary" target="_blank">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M20.6644 10.2284L4.72939 1.14498C3.80552 0.618606 2.625 1.28581 2.625 2.35717V21.6428C2.625 22.7142 3.80552 23.3814 4.72939 22.855L20.6644 13.7716C21.5649 13.2586 21.5649 10.7414 20.6644 10.2284Z"/>
-                        </svg>
-                        <span>Google Play</span>
-                    </a>
-                    <a href="https://ykb4.github.io/Tridimensional-Chess/" class="btn btn-secondary" target="_blank">
-                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-                        </svg>
-                        <span>Play in Browser</span>
-                    </a>
-                </div>
-            </div>
-
         </div>
-    </div>
 
-    <footer class="site-footer">
-        <p class="copyright">&copy; 2026 My Projects</p>
-        <a href="Privacy_Policy.txt" target="_blank">Privacy Policy</a>
-    </footer>
+        <div class="card">
+            <img src="https://via.placeholder.com/600x300/1e1e2d/fff?text=3D+Chess+Banner" alt="3D Chess Banner" class="card-banner">
+            
+            <div class="card-body">
+                <h2>3D Chess</h2>
+                <p>Experience the classic strategy game in a new dimension. Tridimensional Chess for mobile and browser.</p>
+                
+                <div class="button-group">
+                    <a href="https://play.google.com/store/apps/details?id=com.dreidimensional.schach" class="btn btn-blue" target="_blank">Google Play</a>
+                    <a href="https://ykb4.github.io/Tridimensional-Chess/" class="btn btn-grey" target="_blank">Play in Browser</a>
+                    <a href="Privacy_Policy.txt" class="btn btn-outline" target="_blank">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
 </body>
 </html>
