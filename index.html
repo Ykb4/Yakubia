@@ -2,19 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Discover my games: Yakubia and Tridimensional Chess.">
-    <meta name="theme-color" content="#0a0a0c">
+    <meta name="theme-color" content="#0d0d0f">
     
     <title>My Projects | Apps & Games</title>
     <style>
         :root {
-            --bg-color: #0d0d0f; /* Sehr dunkler Hintergrund wie im Vorbild */
-            --card-bg: #16161e; /* Der dunkelblau-graue Ton der Karten */
+            --bg-color: #0b0b0d; /* Dunkler Hintergrund */
+            --card-bg: #16161e; /* Dunkelblau/Grau der Karten wie bei Aedus G. */
             --text-main: #ffffff;
-            --text-muted: #a0a0a5;
+            --text-muted: #9ba1a6;
             
-            /* Button Farben aus deinem Screenshot */
+            /* Exakte Button-Farben aus deiner Vorlage */
             --btn-blue: #3b82f6;
             --btn-grey: #4a4a4a;
         }
@@ -33,29 +33,30 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 40px 20px;
+            /* SEHR WICHTIG: Wenig Seitenabstand (12px), damit die Karten riesig werden */
+            padding: 30px 12px; 
         }
 
-        /* Container auf Handy-Größe optimiert */
         .container {
+            /* Zwingt den Container auf 100% der Handybreite */
             width: 100%;
-            max-width: 500px; /* Hält alles schön kompakt zusammen */
+            max-width: 480px; 
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
-        /* Zentrierter Header wie bei "Aedus G." */
         header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
             width: 100%;
         }
 
         header h1 {
-            font-size: 2.5rem;
+            /* Größere Schriftart für den "Zoom"-Effekt */
+            font-size: 2.8rem; 
             font-weight: 800;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
         header p {
@@ -66,28 +67,37 @@
             margin: 0 auto;
         }
 
-        /* Die neuen, großen Karten */
         .card {
             background-color: var(--card-bg);
             border-radius: 20px;
-            width: 100%;
-            margin-bottom: 30px;
-            overflow: hidden; /* Schneidet das Bild oben an den Ecken rund ab */
+            width: 100%; /* Nutzt die komplette verfügbare Breite */
+            margin-bottom: 24px;
+            overflow: hidden;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
 
-        /* Das große Banner-Bild oben */
-        .card-banner {
+        /* Der farbige "Banner"-Bereich für dein Icon */
+        .card-img-container {
             width: 100%;
-            height: 220px; /* Feste Höhe für die Bilder */
-            object-fit: cover; /* Verhindert Verzerrungen */
-            background-color: #222;
-            display: block;
+            height: 160px;
+            /* Ein leichter Farbverlauf als Hintergrund für das Icon */
+            background: linear-gradient(135deg, #2a2a36 0%, #1e1e26 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        /* Der untere Teil mit Text und Buttons */
+        /* Dein App-Icon */
+        .card-icon {
+            width: 90px;
+            height: 90px;
+            border-radius: 20px; /* Abgerundete Ecken beim Icon */
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4); /* Leichter Schatten */
+            object-fit: cover;
+            background-color: #222;
+        }
+
         .card-body {
             padding: 24px;
             display: flex;
@@ -102,17 +112,16 @@
 
         .card-body p {
             color: var(--text-muted);
-            font-size: 1rem;
+            font-size: 1.05rem;
             line-height: 1.5;
             margin-bottom: 24px;
         }
 
-        /* Buttons linksbündig und gestapelt */
         .button-group {
             display: flex;
             flex-direction: column;
             gap: 12px;
-            align-items: flex-start; /* Verhindert, dass die Buttons über die ganze Breite gehen */
+            align-items: flex-start; /* Buttons sind nur so breit wie der Text */
         }
 
         .btn {
@@ -129,7 +138,6 @@
             opacity: 0.85;
         }
 
-        /* Die verschiedenen Button-Styles aus deinen Bildern */
         .btn-blue {
             background-color: var(--btn-blue);
             color: #ffffff;
@@ -158,7 +166,9 @@
         </header>
 
         <div class="card">
-            <img src="https://via.placeholder.com/600x300/1e1e2d/fff?text=Yakubia+Banner" alt="Yakubia Banner" class="card-banner">
+            <div class="card-img-container" style="background: linear-gradient(135deg, #3b2168 0%, #171124 100%);">
+                <img src="25415.png" alt="Yakubia Icon" class="card-icon" onerror="this.src='https://via.placeholder.com/90/111/fff?text=Y'">
+            </div>
             
             <div class="card-body">
                 <h2>Yakubia</h2>
@@ -171,7 +181,9 @@
         </div>
 
         <div class="card">
-            <img src="https://via.placeholder.com/600x300/1e1e2d/fff?text=3D+Chess+Banner" alt="3D Chess Banner" class="card-banner">
+            <div class="card-img-container" style="background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);">
+                <img src="https://ykb4.github.io/Tridimensional-Chess/icon.png" alt="3D Chess Icon" class="card-icon" onerror="this.src='https://via.placeholder.com/90/111/fff?text=3D'">
+            </div>
             
             <div class="card-body">
                 <h2>3D Chess</h2>
